@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome, <span th:text="${username != null ? username : 'Guest'}">Guest</span>!</h1>
+    <div th:if="${#authorization.expression('isAuthenticated()')}">
+        <a href="/logout">Logout</a>
+    </div>
+    <div th:unless="${#authorization.expression('isAuthenticated()')}">
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    </div>
+</body>
+</html>
